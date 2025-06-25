@@ -76,3 +76,15 @@ http://localhost:4000/name?lastname=verma
 ```
 
 - Accessing `http://localhost:4000/name?lastname=verma` will return the data in object
+
+### Request Body
+
+To access request body we need to use `express.json()` middleware in application
+
+### Middleware in Routes
+
+Middleware is a function that has access to `req` and `res`.
+And it sits between the request and the response meaning it can:
+
+- Inspect or modify the request
+- Process or format the response
