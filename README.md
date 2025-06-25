@@ -8,6 +8,33 @@ Express.js is a minimal and flexible web framework for Node.js used to build web
 
 - `Express.js@5` requires node version greater than 18
 
+### HTTP Methods
+
+These methods define the type of operation the client wants to perform on a resource (like a user, post, or product).
+
+- `GET`: Read/fetch data
+- `POST`: Create new data
+- `PUT` : Update entire data
+- `PATCH` :Update partial data
+- `DELETE`: Delete data
+
+### Status Code
+
+These codes tell the client what happened with their request.
+
+- `200`: OK => Request successful
+- `201`: Created => Resource successfully created
+- `204`: No Content => Success, but no data returned
+- `300`: Multiple Choices => The resource has multiple options (rarely used)
+- `301`: Moved Permanently => Resource has permanently moved to a new URL
+- `400`: Bad Request => Malformed request
+- `401`: Unauthorized => Not logged in or bad credentials
+- `403`: Forbidden => Logged in but access denied
+- `404`: Not Found => Resource not found
+- `500`: Internal Server Error => General server failure
+- `502`: Bad Gateway => Server got invalid response
+- `503`: Service Unavailable => Server is overloaded or down
+
 ### Request and Response
 
 The req object represents the incoming HTTP request.
