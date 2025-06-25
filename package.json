@@ -1,0 +1,24 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "\"# Express.js-crash-course\"",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saurabhkara/express.js-crash-course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saurabhkara/express.js-crash-course/issues"
+  },
+  "homepage": "https://github.com/saurabhkara/express.js-crash-course#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
