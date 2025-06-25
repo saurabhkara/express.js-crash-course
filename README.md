@@ -88,3 +88,44 @@ And it sits between the request and the response meaning it can:
 
 - Inspect or modify the request
 - Process or format the response
+
+`Client → Middleware 1 → Middleware 2 → Route Handler → Response`
+
+There are two type of middleware
+
+- Global middleware
+- Custom middleware
+
+Global Inbuild Middleware example
+
+```js
+app.use(express.json());
+```
+
+Custom Globle middleware example
+
+```js
+const apiDetails = (req, res, next) => {
+  console.log("Details", req.method, req.url, new Date().toLocaleDateString());
+  next();
+};
+
+app.use(apiDetails);
+```
+
+Middleware can created for some particular resources(apis)
+
+example
+
+```js
+const particularMiddleWare = (req, res, next) => {
+  console.log("Route of api", req.url);
+  next();
+};
+
+app.get("/", particularMiddleWare, (req, res) => {
+  res.status(200).json({ message: "Express.js is good " });
+});
+```
+
+As many as middlewares can applied
