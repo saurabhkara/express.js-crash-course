@@ -1,16 +1,29 @@
 import express from "express";
 import cors from "cors";
 import env from "dotenv";
+import helmet from "helmet";
 
 import { dbConnect } from "./src/config/db.js";
+import userRouter from "./src/user/user.route.js";
 
 const app = express();
 env.config();
 const PORT = process.env.PORT || 4000;
 
+try {
+  dbConnect();
+  console.log("Database connected");
+} catch (error) {
+  console.log("Error occured while connecting db", error);
+}
+
 //Global Middleware express.json
+app.use(helmet());
 app.use(express.json());
 app.use(cors());
+app.use(express.static("public")); //Static content will be shared
+
+app.use("/api/user", userRouter);
 
 //Custom middleware
 
@@ -50,26 +63,21 @@ app.get("/name", (req, res) => {
 
 //Accessing body
 
-app.post("/api/user", (req, res) => {
-  console.log("body", req.body);
-  res.json({ message: "users data" });
-});
+// app.post("/api/user", (req, res) => {
+//   console.log("body", req.body);
+//   res.json({ message: "users data" });
+// });
 
 //Error handling middleware
 
 app.use((error, req, res, next) => {
   console.error("Error", error.stack);
-  res.status(500).json({ message: "Something went wrong" });
+  console.log(error.message, error.statusCode);
+  const statusCode = error.statusCode ? error.statusCode : 500;
+  res.status(statusCode).json({ message: error.message });
 });
 
 //App is listing
 app.listen(PORT, () => {
   console.log(`Server is listning on ${PORT}`);
-  dbConnect()
-    .then(() => {
-      console.log("Database connection stablised");
-    })
-    .catch((err) => {
-      console.log("error occurred while connection db", err);
-    });
 });

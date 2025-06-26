@@ -128,4 +128,37 @@ app.get("/", particularMiddleWare, (req, res) => {
 });
 ```
 
-As many as middlewares can applied
+As many as middlewares can be applied
+
+### Error handling in Express js
+
+```js
+app.use((error, req, res, next) => {
+  console.error("Error", error.stack);
+  console.log(error.message, error.statusCode);
+  const statusCode = error.statusCode ? error.statusCode : 500;
+  res.status(statusCode).json({ message: error.message });
+});
+```
+
+when inside `app.use()` callback 4 parameters are received, express.js consider that middleware as error handling middleware.
+
+The best practice to handle error is to handle the error at the same place where error is occuring.
+
+### Router
+
+To refactor code express.js gives alot of options to achieve task.
+
+```js
+import express from "express";
+const router = express.Router();
+```
+
+### MongoDB connection
+
+Mongoose package is used to connect server and database.
+
+- Establish connection with Database
+- Create Schema
+- Create Model
+- Insert data into model
