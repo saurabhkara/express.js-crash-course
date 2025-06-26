@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/:userid", authMiddleware, async (req, res, next) => {
   const { userId } = req;
   const userIdParams = req.params?.userid;
-  console.log("params", userId, userIdParams);
+
   if (userId !== userIdParams) {
     const error = new Error("Unauthorized access");
     error.statusCode = 403;

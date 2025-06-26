@@ -162,3 +162,7 @@ Mongoose package is used to connect server and database.
 - Create Schema
 - Create Model
 - Insert data into model
+
+### Created three routes in project
+
+- check `server.js`
